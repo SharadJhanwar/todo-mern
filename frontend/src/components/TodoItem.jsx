@@ -1,4 +1,4 @@
-function TodoItem({ todoName, todoDate, onDeleteClick }) {
+function TodoItem({ id, todoName, todoDate, completed, onDeleteClick, onMarkCompleted }) {
   return (
     <div className="container">
       <div className="row kg-row">
@@ -8,13 +8,26 @@ function TodoItem({ todoName, todoDate, onDeleteClick }) {
           <button
             type="button"
             className="btn btn-danger kg-button"
-            onClick={() => onDeleteClick(todoName)}
+            onClick={() => onDeleteClick(id)}
           >
             Delete
           </button>
-        </div>
+          {completed ? (
+            <button type="button" className="btn btn-success" disabled>
+              Completed
+            </button>
+          ): (
+              <button
+            type = "button"
+            className = "btn btn-warning kg-button"
+            onClick = { () => onMarkCompleted(id) }
+              >
+            Mark Completed
+          </button>
+          )}
       </div>
     </div>
+    </div >
   );
 }
 
